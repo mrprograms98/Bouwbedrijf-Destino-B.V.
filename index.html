@@ -44,12 +44,63 @@
 
     /* layout */
     .container{max-width:var(--max-width);margin:0 auto;padding:28px}
-    header {position: fixed;top: 0;left: 0; width: 100%;z-index: 999;background: #fff;box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* subtiel schaduw voor zichtbaarheid */
-  transition: all 0.3s ease;
+    
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+  display: flex;             /* FLEX ZETTEN */
+  justify-content: flex-start; /* NIET CENTREREN */
 }
 
+.nav-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between; /* LOGO LINKS – MENU RECHTS */
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo img {
+  max-width: 150px;
+  height: auto;
+}
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    padding: 6px 10px;
+}
+
+nav ul li.lang a {
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+nav ul li.lang a:hover {
+    background: #ddd;
+    border-color: #bbb;
+}
+
+
     header.scrolled{box-shadow:0 10px 40px rgba(40,30,60,0.06)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
     .brand{display:flex;align-items:center;gap:12px}
     .logo{font-family:'Lora';font-size:20px;color:var(--lavender);letter-spacing:0.6px}
     .logo .spark{color:var(--gold);font-weight:700;margin-left:6px}
@@ -78,7 +129,9 @@ nav.primary a.active {
   color: #fff;                       /* actieve link in wit */
   background: var(--lavender-600);   /* mooie gradient kan ook */
 }
-
+main {
+    padding-top: 80px; /* zelfde hoogte als de header */
+}
 
     /* hamburger */
     .hamburger{
@@ -95,7 +148,11 @@ nav.primary a.active {
     .hamburger .bars{position:relative;display:inline-block;padding:6px 10px}
     .hamburger .bar{display:block;width:20px;height:2px;background:var(--text);margin:4px 0;border-radius:2px;transition:transform var(--transition),opacity var(--transition),background var(--transition)}
     /* open state */
-    .hamburger[aria-expanded="true"]{background:rgba(125,82,160,0.06)}
+    .hamburger[aria-expanded="true"] {
+  background: rgba(168,146,201,0.18);
+  box-shadow: 0 0 0 4px rgba(168,146,201,0.25);
+  z-index: 9999; /* zichtbaar boven mobile nav */
+}
     
     .hamburger[aria-expanded="true"] .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); background:var(--lavender-600)}
     /* duidelijke zichtbare knop wanneer menu open is */
@@ -503,6 +560,11 @@ textarea {
   color: #ffffff;
   margin: 0; /* Verwijder marges */
   padding: 20px; /* Optioneel: padding voor inhoud */
+  position: fixed; /* of sticky */
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  height: 80px;
 }
 
 .footer {
@@ -796,7 +858,6 @@ gn:center}
   }
 }
 
-
     /* whatsapp */
     .whatsapp-btn{position:fixed;right:20px;bottom:20px;background:linear-gradient(180deg, #7e62a8, #6b4ba8);width:64px;height:64px;border-radius:50%;display:grid;place-items:center;color:#fff;cursor:pointer;box-shadow:0 14px 40px rgba(107, 75, 168, 0.16);z-index:90;transition:transform .18s;border: none; /* Verwijder eventuele rand */
   outline: none; /* Verwijder outline bij focus */}
@@ -810,6 +871,43 @@ gn:center}
 
     /* focus */
     a:focus,button:focus,input:focus,textarea:focus{outline:none;box-shadow:0 0 0 8px rgba(168,146,201,0.12)}
+    /* Mobiel menu standaard verbergen */
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+/* Mobiel: menu als kolom tonen */
+@media (max-width: 900px) {
+    .nav-links {
+        display: none; /* menu dicht */
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    /* Wanneer menu open is */
+    .nav-links.open {
+        display: flex;
+    }
+
+    /* Taal knoppen in mobiel menu */
+    .nav-links .lang a {
+        background: #eee;
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        border-radius: 4px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-links .lang a:hover {
+        background: #ddd;
+    }
+}
+
   </style>
 </head>
 <body>
@@ -828,11 +926,17 @@ gn:center}
       </div>
 
       <nav class="primary" aria-label="Hoofdnavigatie">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#over" class="nav-link">Over mij</a>
-        <a href="#werkwijze" class="nav-link">Werkwijze</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Over</a></li>
+          <li><a href="#">Diensten</a></li>
+          <li><a href="#">Contact</a></li>
+
+          <li class="lang-btn" data-lang="nl"><a href="#">NL</a></li>
+          <li class="lang-btn" data-lang="de"><a href="#">DE</a></li>
+        </ul>
       </nav>
+      
 
       <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav" title="Open menu">
         <span class="pill" aria-hidden="true"></span>
@@ -850,9 +954,13 @@ gn:center}
       <a href="#over" class="mobile-link">Over mij</a>
       <a href="#werkwijze" class="mobile-link">Werkwijze</a>
       <a href="#contact" class="mobile-link">Contact</a>
+      <a href="#" class="lang-btn" data-lang="nl">NL</a>
+      <a href="#" class="lang-btn" data-lang="de">DE</a>
       <div style="margin-top:auto;color:var(--muted);font-size:14px">© Medium.Hope</div>
     </nav>
   </header>
+
+
 
   <main>
     <section id="home" class="hero container" aria-labelledby="homeTitle">
@@ -1262,6 +1370,10 @@ mobileLinks.forEach(a => a.addEventListener('click', ()=> toggleMobileNav(false)
   </script>
 </body>
 </html>
+
+
+
+
 
 
 
