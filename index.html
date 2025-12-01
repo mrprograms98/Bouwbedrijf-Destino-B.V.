@@ -214,18 +214,7 @@ main {
 }
     
     .hamburger[aria-expanded="true"] .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); background:var(--lavender-600)}
-    /* duidelijke zichtbare knop wanneer menu open is */
-
-/* -------------------------- */
-/* 🌙 MYSTIEK MOBIEL MENU     */
-/* -------------------------- */
-
-/* ------------------------------ */
-/* 📱 Mobiel menu: volledig dekkend */
-/* ------------------------------ */
-/* ------------------------------ */
-/* 📱 Mobiel menu: volledig dekkend, hamburger blijft zichtbaar */
-/* ------------------------------ */
+  
 
 .mobile-nav {
   position: fixed;
@@ -293,7 +282,6 @@ main {
   z-index: 9999; /* zichtbaar boven mobile nav */
 }
 
-}
 /* achtergrond dimmer */
 #navOverlay {
   position: fixed;
@@ -1670,6 +1658,17 @@ mobileLinks.forEach(a => a.addEventListener('click', ()=> toggleMobileNav(false)
     });
 
   </script>
+  <script>
+window.addEventListener("load", function() {
+    const preloader = document.querySelector(".preloader");
+    preloader.classList.add("fade-out");
+
+    setTimeout(() => {
+        preloader.style.display = "none";
+    }, 800);
+});
+</script>
+
 <script>
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
@@ -1684,12 +1683,3 @@ mobileLinks.forEach(a => a.addEventListener('click', ()=> toggleMobileNav(false)
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
