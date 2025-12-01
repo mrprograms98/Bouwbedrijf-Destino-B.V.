@@ -342,7 +342,6 @@ main {
     section{
     padding:72px 0;
     position: relative;
-  padding: 72px 0;
 }
 
 /* zachte elegante lijn tussen secties */
@@ -455,10 +454,6 @@ section:not(:last-of-type)::after {
   text-align: center;         /* iets meer padding binnenin */
 }
 
-/* Verhoog textarea hoogte */
-.contact-form textarea {
-  min-height: 180px;       /* grotere textarea */
-}
 
 /* Submit button breder en gecentreerd */
 .contact-form .form-submit {
@@ -617,6 +612,7 @@ section:not(:last-of-type)::after {
 textarea {
   min-height: 120px;
   resize: vertical;
+  width:100%;
 }
 
 /* buttons */
@@ -640,10 +636,6 @@ textarea {
   }
 }
 
-
-textarea, input {
-  width: 100%;
-}
 .footer {
   background: linear-gradient(to top, #8e44ad, #ffffff);
   margin: 0; /* Verwijder marges */
@@ -792,21 +784,14 @@ textarea, input {
   .socials {
     justify-content: center;
   }
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .location-wrapper {
+   .location-wrapper {
     grid-template-columns: 1fr;
-  }
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
   }
   .footer-column {
     margin-bottom: 30px;
   }
 }
+
 gn:center}
 
     /* socials */
@@ -1679,6 +1664,7 @@ window.addEventListener("load", function() {
 </script>
 </body>
 </html>
+
 
 
 
