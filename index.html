@@ -62,7 +62,6 @@
     justify-content: center;
     z-index: 999999;
     opacity: 1;
-    transition: opacity 0.8s ease;
 }
 
 /* Langzamere pulse animatie */
@@ -233,13 +232,11 @@ main {
       position:absolute;inset:0;border-radius:12px;background:transparent;transition:background var(--transition),box-shadow var(--transition);box-shadow: 0 4px 18px rgba(0,0,0,0.15);
     }
 
-    .hamburger .bars{position:relative;display:inline-block;padding:6px 10px}
-    .hamburger .bar{display:block;width:20px;height:2px;background:var(--text);margin:4px 0;border-radius:2px;transition:transform var(--transition),opacity var(--transition),background var(--transition)}
+.hamburger .bars{position:relative;display:inline-block;padding:6px 10px}
+.hamburger .bar{display:block;width:20px;height:2px;background:var(--text);margin:4px 0;border-radius:2px;transition:transform var(--transition),opacity var(--transition),background var(--transition)}
     /* open state */
 
-    
-    .hamburger[aria-expanded="true"] .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); background:var(--lavender-600)}
-  
+.hamburger[aria-expanded="true"] .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); background:var(--lavender-600)}
 
 .mobile-nav {
   position: fixed;
@@ -319,7 +316,6 @@ main {
 /* hamburger duidelijk zichtbaar tijdens open */
 .hamburger[aria-expanded="true"] {
   background: rgba(168,146,201,0.18);
-  box-shadow: 0 0 0 4px rgba(168,146,201,0.25);
 }
 
 /* achtergrond dimmer */
@@ -609,7 +605,7 @@ section:not(:last-of-type)::after {
   gap: 12px;
 }
 
-.contact-info-only .info-line {
+.contact-info-only {
   display: flex;
   align-items: center;     /* icon + tekst netjes in 1 lijn */
   justify-content: center; /* hele lijn gecentreerd */
@@ -716,16 +712,13 @@ textarea {
   background: linear-gradient(to top, #8e44ad, #ffffff);
   margin: 0; /* Verwijder marges */
   padding: 20px; /* Optioneel: padding voor inhoud */
-  border: none; /* Zorg dat er geen borders zijn */
   border-top: none; /* Geen rand bovenaan de footer */
 }
-    /* contact (no form) */
-    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
-    .contact-card { display:flex;flex-direction:column;gap:12px;align-items:flex-start }
+  /* contact (no form) */
+  .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+  .contact-card { display:flex;flex-direction:column;gap:12px;align-items:flex-start }
 
-    /* ---------------------- */
 /* 🗺️ Locatie Sectie */
-/* ---------------------- */
 
 .location-section {
   padding-top: 90px;
@@ -1786,5 +1779,6 @@ window.addEventListener('resize', () => {
 
 </body>
 </html>
+
 
 
