@@ -341,6 +341,7 @@ main {
   padding-left: 20px;
   padding-right: 20px;
   position: relative;
+  z-index:999;
 }
 section::before {
   content: "";
@@ -363,7 +364,8 @@ section::before {
   width: 100%;
   max-width: 1300px;       /* midden op desktop */
   margin: 0 auto;
-  padding: 0 20px;         /* veilige ruimte links + rechts */
+  padding: 0 20px;     
+  z-index:-999;/* veilige ruimte links + rechts */
 }
 .card,
 .info-box,
@@ -1755,4 +1757,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
