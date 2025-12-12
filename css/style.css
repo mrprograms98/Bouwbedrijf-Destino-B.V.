@@ -34,7 +34,7 @@ body{
 }
 
 /* layout */
-.container{max-width:var(--max-width);margin:0 auto;padding:28px align-items:center;}
+.container{max-width:var(--max-width);margin:0 auto;padding:28px; align-items:center;}
 
 /* PRELOADER */
 .preloader {
@@ -1079,4 +1079,5 @@ footer::after {
   .welcome-sub {
     font-size: 17px;
   }
+
 }
